@@ -13,3 +13,4 @@ Clone it, head into the project and then run:
 ```
 sass-convert -F sass -T scss -i -R ./ && find . -iname "*.sass" -exec bash -c 'mv "$0" "${0%\.sass}.scss"' {} \;
 ```
+# funreact
