@@ -2,20 +2,22 @@
   "name": "reactapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bundle.js",
   "scripts": {
     "start": "webpack-dev-server --hot",
-    "scss": "node-sass --include-path scss stylesheets/main.scss dist/css/stylesheet.css"
+    "scss": "node-sass --include-path scss stylesheets/stylesheet.scss dist/css/stylesheet.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-preset-react": "^6.16.0",
     "bootstrap": "^3.3.7",
-    "react": "^15.3.1",
-    "react-bootstrap": "^0.30.3",
-    "react-dom": "^15.3.1",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
+    "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-bootstrap": "^0.23.1",
     "redux": "^3.5.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
