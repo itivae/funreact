@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactBootstrap from 'react-bootstrap';
+import {ReactBootstrap, Grid, Row, Col} from 'react-bootstrap';
 import {Router, Route, RouteHandler, Link, browserHistory, IndexRoute} from 'react-router';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import {Navbar,Nav, NavItem, DropdownButton, MenuItem} from 'react-bootstrap';
@@ -48,6 +48,7 @@ class Home extends React.Component {
 		return(
 			<div>
 				<Banner name="Home" />
+				<Content />
 			</div>
 		);
 	}
@@ -81,6 +82,25 @@ class Banner extends React.Component {
 		return(
 			<div className="col-md-12 col-sm-12 banner">
 				<h1>{this.props.name}</h1>
+			</div>
+		);
+	}
+}
+
+var dummySentences = ['Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 'Donec hendrerit tempor tellus.', 'Donec pretium posuere tellus.', 'Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Nulla posuere.', 'Donec vitae dolor.', 'Nullam tristique diam non turpis.', 'Cras placerat accumsan nulla.', 'Nullam rutrum.', 'Nam vestibulum accumsan nisl.'];
+
+class Content extends React.Component {
+	render() {
+		return(
+			<div className="container content">
+				<Grid>
+				    <Row className="show-grid">
+				      <Col sm={6} md={3}>{dummySentences.slice(0, 6).join(' ')}</Col>
+				      <Col sm={6} md={3}>{dummySentences.slice(0, 4).join(' ')}</Col>
+				      <Col sm={6} md={3}>{dummySentences.slice(0, 6).join(' ')}</Col>
+				      <Col sm={6} md={3}>{dummySentences.slice(0, 2).join(' ')}</Col>
+				    </Row>
+				</Grid>
 			</div>
 		);
 	}
