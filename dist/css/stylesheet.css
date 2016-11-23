@@ -497,6 +497,21 @@ body {
   position: absolute;
   width: 1px; }
 
+.footer {
+  padding: 50px 0;
+  background-color: #252525;
+  text-align: center;
+  color: #ffffff; }
+
+.top-bottom {
+  margin: 20px 0; }
+
+.margin-bottom {
+  margin-bottom: 20px; }
+
+.content {
+  margin: 30px auto; }
+
 .banner {
   background-color: #000000;
   overflow: hidden;
