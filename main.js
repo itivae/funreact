@@ -11,10 +11,25 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-			  <Navbar inverse>
+				<TopMenu />
+			  	<div>
+					{this.props.children}
+			    </div>
+			</div>
+		);
+	}
+}
+
+export default App;
+
+class TopMenu extends React.Component {
+	render() {
+		return(
+			<div>
+				<Navbar inverse>
 			    <Navbar.Header>
 			      <Navbar.Brand>
-			        <a href="#">React-Bootstrap</a>
+			        <a href="/">React-Bootstrap</a>
 			      </Navbar.Brand>
 			      <Navbar.Toggle />
 			    </Navbar.Header>
@@ -32,23 +47,17 @@ class App extends React.Component {
 			      </Nav>
 			    </Navbar.Collapse>
 			  </Navbar>
-			  	<div>
-					{this.props.children}
-			    </div>
 			</div>
 		);
 	}
 }
 
-export default App;
-
-
 class Home extends React.Component {
 	render() {
 		return(
 			<div>
-				<Banner name="Home" />
-				<Content columns={4} />
+				<Banner name="Home"/>
+				<Content columns={3} />
 				<Footer />
 			</div>
 		);
@@ -56,12 +65,11 @@ class Home extends React.Component {
 }
 
 
-
 class About extends React.Component {
 	render() {
 		return(
 			<div>
-				<Banner name="About" />
+				<Banner name="About" bgcolor="#666666" />
 				<Content columns={2} />
 				<Footer />
 			</div>
@@ -85,7 +93,7 @@ class Contact extends React.Component {
 class Banner extends React.Component {
 	render() {
 		return(
-			<div className="col-md-12 col-sm-12 banner margin-bottom">
+			<div className="col-md-12 col-sm-12 banner margin-bottom" style={{backgroundColor: this.props.bgcolor}}>
 				<h1>{this.props.name}</h1>
 			</div>
 		);
@@ -123,12 +131,12 @@ class Content extends React.Component {
 				for(var i=0; i < columns; i++) {
 					var id = i + 1;
 
-					content.push(<Col key={id} sm={grid} md={grid}>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</Col>);
+					content.push(<Col key={id} sm={grid} md={grid}><p>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</p></Col>);
 				}
 		return(
-			<div className="container content">
+			<div className="main-content-area">
 				<Grid>
-				    <Row className="show-grid">
+				    <Row className="show-grid content">
 				    	{content}
 				    </Row>
 				</Grid>

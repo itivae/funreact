@@ -497,8 +497,11 @@ body {
   position: absolute;
   width: 1px; }
 
+.navbar {
+  margin-bottom: 0; }
+
 .footer {
-  padding: 50px 0;
+  padding: 70px 0;
   background-color: #252525;
   text-align: center;
   color: #ffffff; }
@@ -511,11 +514,19 @@ body {
 
 .content {
   margin: 30px auto; }
+  .content p, .content ul, .content ol {
+    font-size: 18px;
+    font-weight: 400; }
+
+.main-content-area {
+  min-height: 600px;
+  padding: 40px 0; }
 
 .banner {
   background-color: #000000;
   overflow: hidden;
-  padding: 50px 0; }
+  padding: 50px 0;
+  clear: both; }
   .banner h1 {
     text-align: center;
     color: #ffffff; }
