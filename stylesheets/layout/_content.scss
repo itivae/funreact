@@ -6,4 +6,12 @@
 }
 .content {
 	margin: 30px auto;
+	p, ul, ol {
+		font-size: 18px;
+		font-weight: 400;
+	}
+}
+.main-content-area {
+	min-height: 600px;
+	padding: 40px 0;
 }

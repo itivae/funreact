@@ -35,7 +35,8 @@ module.exports = {
   output: { path: __dirname, filename: 'bundle.js' },
   devServer: {
 	inline: true,
-	port: 7777
+	port: 7777,
+  historyApiFallback: true
   },
   module: {
     loaders: [
