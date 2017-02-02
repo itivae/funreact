@@ -48,7 +48,7 @@ class Home extends React.Component {
 		return(
 			<div>
 				<Banner name="Home" />
-				<Content columns={4} />
+				<Content columns={3} />
 				<Footer />
 			</div>
 		);
@@ -62,7 +62,7 @@ class About extends React.Component {
 		return(
 			<div>
 				<Banner name="About" />
-				<Content columns={2} />
+				<Content columns={2} sidebar="right" />
 				<Footer />
 			</div>
 		);
@@ -91,12 +91,30 @@ class Banner extends React.Component {
 		);
 	}
 }
+class Sidebar extends React.Component {
+	render() {
+		return(
+			<div className="col-md-4 col-sm-4">
+				<h3>Sidebar Heading</h3>
+				<form action="#" method="post">
+					<label for="first">First name:
+				  	<input type="text" name="first" value="" /></label>
+				  	<label for="last">Last name:
+				  	<input type="text" name="last" value="" /></label><br/><br/>
+				  	<input type="submit" value="Submit" />
+				</form>
+			</div>
+		);
+	}
+}
 
 var dummySentences = ['Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 'Donec hendrerit tempor tellus.', 'Donec pretium posuere tellus.', 'Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Nulla posuere.', 'Donec vitae dolor.', 'Nullam tristique diam non turpis.', 'Cras placerat accumsan nulla.', 'Nullam rutrum.', 'Nam vestibulum accumsan nisl.'];
 class Content extends React.Component {
 	render() {
 		var columns = this.props.columns;
+		var sidebar = this.props.sidebar;
 		var grid;
+
 		switch(columns) {
 			case 1:
 				grid = 12;
@@ -117,12 +135,32 @@ class Content extends React.Component {
 				grid = 12;
 				break;
 		}
+		 
+	
 		var content = [];
 		var sliver = [{"start": 0, "stop": 6}, {"start": 0, "stop": 4}, {"start": 4, "stop": 6}, {"start": 2, "stop": 6}]
 		
 				for(var i=0; i < columns; i++) {
 					var id = i + 1;
+					if(sidebar === "right" && columns === 2 && i == columns - 1) {
+						content.push(<Col key={id}><Sidebar /></Col>);
+						continue;
+						
+					} else if(sidebar === "right" && columns === 2 && i == columns - 2) {
+						grid = grid + 2;
+						content.push(<Col key={id} sm={grid} md={grid}>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</Col>);
+						
+					} else if(sidebar === "left" && columns === 2 && i == columns - 1) {
+						grid = grid + 2;
+						content.push(<Col key={id} sm={grid} md={grid}>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</Col>);
+						
+					} else if(sidebar === "left" && columns === 2 && i == columns - 2) {
+						content.push(<Col key={id}><Sidebar /></Col>);
+						continue;
+					} else if(sidebar === "" || sidebar === undefined || sidebar === null) {
 
+						content.push(<Col key={id} sm={grid} md={grid}>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</Col>);
+					}
 					content.push(<Col key={id} sm={grid} md={grid}>{dummySentences.slice(sliver[i]["start"], sliver[i]["stop"]).join(' ')}</Col>);
 				}
 		return(
